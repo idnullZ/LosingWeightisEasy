@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.home.HomeFragment"
+    android:background="#788392">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:cardElevation="32dp"
+        app:cardCornerRadius="32dp"
+        app:layout_constraintStart_toEndOf="@id/glide2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/edit_query">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <TextView
+                android:id="@+id/kCalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
+                tools:text="1020"
+                android:textColor="#00DBCD"
+                android:textSize="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintHorizontal_bias="0.1"
+                android:text="KCal"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/kCalText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/kCalText" />
+
+            <TextView
+                android:layout_marginTop="16dp"
+                android:id="@+id/textView_lost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="lost"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/kCalText" />
+
+            <TextView
+                android:id="@+id/lostKcal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1024KCal"
+                android:layout_marginTop="16dp"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView_lost"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textStyle="bold"
+                app:layout_constraintHorizontal_bias="0.9"
+                app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/target_textView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Max"
+                android:layout_marginTop="16dp"
+                android:textSize="18sp"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintTop_toBottomOf="@id/textView_lost"
+                />
+
+            <TextView
+                android:id="@+id/target"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="950Kcal"
+                android:textSize="22sp"
+                android:textStyle="bold"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.9"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lostKcal" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <com.shunan.circularprogressbar.CircularProgressBar
+        android:id="@+id/circleProgressBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="@id/glide1"
+        app:layout_constraintEnd_toEndOf="@id/glide2"
+        app:layout_constraintTop_toTopOf="parent"
+        android:indeterminate="true"
+        android:layout_marginTop="32dp"
+/>
+
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glide1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glide2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.50"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:shadowRadius="100"
+        android:layout_width="match_parent"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:maxLines="1"
+        android:inputType="numberDecimal"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@id/circleProgressBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/edit_query"
+        android:singleLine="true"
+        android:background="@drawable/edit_text"
+        />
+
+
+    <com.google.android.material.button.MaterialButton
+
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="48dp"
+        android:gravity="center"
+        android:background="@drawable/circle"
+        app:icon="@drawable/ic_baseline_check_24"
+        app:iconGravity="textTop"
+        app:iconSize="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_query"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
