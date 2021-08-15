@@ -1,19 +1,14 @@
 package idnull.znz.losing_weight_is_easy.presentation.home
 
-import android.content.Context
+import android.util.Log
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
-
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
 import idnull.znz.losing_weight_is_easy.dataStore
 import idnull.znz.losing_weight_is_easy.utils.APP
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
@@ -62,8 +57,8 @@ class HomeViewModel @Inject constructor( ) : ViewModel() {
 
     private suspend fun getKCalOfPreferences(): Int {
         val dataStoreKey = stringPreferencesKey("key1")
-        val data = APP.dataStore.data.first()
-        return if (data[dataStoreKey] == null) 0 else data[dataStoreKey].toString().toInt()
+        val data = APP.dataStore.data.firstOrNull()?.get(dataStoreKey)
+        return data?.toInt() ?: 0
     }
 
     fun setInitialValue() {
@@ -77,6 +72,7 @@ class HomeViewModel @Inject constructor( ) : ViewModel() {
             val value = getKCalOfPreferences()
             _kCal.value = value
             if (value > 0) {
+
                 _kCalPercent.value = value / (readMaxKCalInPreferences() / 100)
             }
             setLostValueKCal()
@@ -92,8 +88,8 @@ class HomeViewModel @Inject constructor( ) : ViewModel() {
 
    private suspend fun getLastDayOfPreferences(): Int {
         val dataStoreKey = stringPreferencesKey("calendar")
-        val data = APP.dataStore.data.first()
-        return if (data[dataStoreKey] == null) -1 else data[dataStoreKey].toString().toInt()
+        val data = APP.dataStore.data.firstOrNull()?.get(dataStoreKey)
+        return data?.toInt() ?: -1
     }
 
     private fun getToDay(): Int {
@@ -115,8 +111,8 @@ class HomeViewModel @Inject constructor( ) : ViewModel() {
 
    suspend fun readMaxKCalInPreferences(): Int {
         val dataStoreKey = stringPreferencesKey("maxkCal")
-        val data = APP.dataStore.data.first()
-        return if (data[dataStoreKey] == null) 0 else data[dataStoreKey]?.toInt()!!
+        val data = APP.dataStore.data.firstOrNull()?.get(dataStoreKey)
+        return data?.toInt() ?: 0
     }
 
     private fun setLostValueKCal() {

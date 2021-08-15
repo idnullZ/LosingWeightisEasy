@@ -7,9 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
-
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
@@ -96,7 +94,7 @@ class SetupFragment : Fragment() {
 
     private suspend fun saveMaxKCalInPreferences(value: Int) {
         val dataStoreKey = stringPreferencesKey("maxkCal")
-        context?.dataStore?.edit {
+        requireContext().dataStore.edit {it ->
             it[dataStoreKey] = value.toString()
         }
     }
