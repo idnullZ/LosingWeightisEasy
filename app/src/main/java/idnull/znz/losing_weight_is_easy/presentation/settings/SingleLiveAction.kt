@@ -19,7 +19,6 @@ import java.util.concurrent.atomic.AtomicBoolean
  * Event Wrapper: https://medium.com/androiddevelopers/livedata-with-snackbar-navigation-and-other-events-the-singleliveevent-case-ac2622673150
  *
  * @see <a href="https://github.com/android/architecture-samples/blob/dev-todo-mvvm-live/todoapp/app/src/main/java/com/example/android/architecture/blueprints/todoapp/SingleLiveEvent.java">google-architecture-samples</a>
- *
  */
 class SingleLiveAction<T> : MutableLiveData<T>() {
     private val pending = AtomicBoolean(false)
